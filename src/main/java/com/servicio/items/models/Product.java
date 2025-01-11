@@ -17,4 +17,6 @@ public class Product {
 
     private LocalDate createAt;
 
+    private int port;
+
 }
