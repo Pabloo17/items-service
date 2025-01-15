@@ -1,0 +1,13 @@
+server:
+  port: 8002
+
+
+spring:
+  application:
+    name: items-service
+
+
+config:
+  baseurl:
+    endpoint:
+      products-service: http://products-service
