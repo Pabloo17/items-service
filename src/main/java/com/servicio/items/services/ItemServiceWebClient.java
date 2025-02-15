@@ -10,7 +10,6 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClient.Builder;
-import org.springframework.web.reactive.function.client.WebClientException;
 
 import com.servicio.items.models.Item;
 import com.servicio.items.models.Product;
@@ -39,14 +38,14 @@ public class ItemServiceWebClient implements ItemService {
 	Map<String, Long> params = new HashMap<>();
 	params.put("id", id);
 
-	try {
-	    return Optional.ofNullable(client.build().get().uri("/{id}", params).accept(MediaType.APPLICATION_JSON)
-		    .retrieve().bodyToMono(Product.class).map(product -> new Item(product, this.random.nextInt(10) + 1))
-		    .block());
+	// try {
+	return Optional.ofNullable(client.build().get().uri("/{id}", params).accept(MediaType.APPLICATION_JSON)
+		.retrieve().bodyToMono(Product.class).map(product -> new Item(product, this.random.nextInt(10) + 1))
+		.block());
 
-	} catch (WebClientException e) {
-	    return Optional.empty();
-	}
+	// } catch (WebClientException e) {
+	// return Optional.empty();
+	// }
 
     }
 
